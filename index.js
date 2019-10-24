@@ -15,10 +15,13 @@ function displayResults(responseJson) {
   $('#js-results-list').empty();
   $('#js-error').empty();
   
-  for (let i = 0; i < responseJson.items.length; i++){
+  for (let i = 0; i < responseJson.data.length; i++){
     $('#js-results-list').append(
-      `<li><h3><a href="${responseJson.data[i].url}">${responseJson.data[i].fullName}</a></h3>
-      <p>${responseJson.data[i].description}</p>
+      `<li>
+      <h3><a href="${responseJson.data[i].url}">${responseJson.data[i].fullName}</a></h3>
+      <p>States: ${responseJson.data[i].states}</p>
+      <p class="details">${responseJson.data[i].description}</p>
+      <p>${responseJson.data[i].weatherInfo}</p>
       </li>`
     );
   };
@@ -26,11 +29,11 @@ function displayResults(responseJson) {
   $('#js-results').removeClass('hidden');
 }
 
-function getParkInfo(query, limit=10) {
+function getParkInfo(query, maxResults=10) {
   const params = {
     api_key: apiKEY,
-    stateCode: query, 
-    limit
+    stateCode: query.split(/[, ]+/).join(','), 
+    limit: maxResults,
   }
   const queryString = queryParamsToString(params)
   const url = baseURL + '?' + queryString;
