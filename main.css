@@ -23,6 +23,10 @@ button:hover {
     color: red;
 }
 
+.details {
+  text-indent: 1em;
+}
+
 .hidden {
   display: none;
 }
