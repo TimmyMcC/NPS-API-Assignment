@@ -17,7 +17,7 @@ function displayResults(responseJson) {
   
   for (let i = 0; i < responseJson.data.length; i++){
     $('#js-results-list').append(
-      `<li>
+      `<li class=actualResults>
       <h3><a href="${responseJson.data[i].url}">${responseJson.data[i].fullName}</a></h3>
       <p>States: ${responseJson.data[i].states}</p>
       <p class="details">${responseJson.data[i].description}</p>
