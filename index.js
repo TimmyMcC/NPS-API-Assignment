@@ -51,7 +51,7 @@ function getParkInfo(query, limit=10) {
 }
 
 function watchForm() {
-  $('.js-form').on('submit', function() {
+  $('#js-form').on('submit', function() {
     event.preventDefault();
     const stateABBR = $('#js-state-search').val();
     const maxResults = $('#js-max-results').val();
